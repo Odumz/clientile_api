@@ -1,11 +1,11 @@
 const express = require ('express'),
-    cors = require("cors"),
-    dotenv = require ('dotenv'),
-    swaggerUI = require ('swagger-ui-express'),
-    YAML = require ('yamljs'),
-    app = express();
-
-const swaggerDoc = YAML.load(`${process.cwd()}/swagger.yaml`);
+  cors = require("cors"),
+  dotenv = require ('dotenv'),
+  swaggerUI = require ('swagger-ui-express'),
+  YAML = require ('yamljs'),
+  app = express(),
+  swaggerDoc = YAML.load(`${process.cwd()}/swagger.yaml`), // import swagger doc
+  { PORT } = process.env; // import port from env
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc, { explorer: true }))
 
@@ -14,9 +14,6 @@ const routes = require("./routes");
 
 // enable env
 dotenv.config();
-
-// import port from env
-const { PORT } = process.env;
 
 // import db connection
 require("./db")();

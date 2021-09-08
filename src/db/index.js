@@ -4,8 +4,8 @@
  *  Test for database connection or disconnection
  */
 
- const mongoose = require("mongoose"),
- dotenv = require("dotenv");
+const mongoose = require("mongoose"),
+   dotenv = require("dotenv");
 
 // Config Env   
 dotenv.config();
@@ -16,7 +16,8 @@ const { MONGO_URI } = process.env;
 const connectDB = async () => {
 try {
    await mongoose.connect(MONGO_URI, {
-       useNewUrlParser: true
+       useNewUrlParser: true,
+       useUnifiedTopology: true
    });
 
    console.log("MongoDB connection successful");

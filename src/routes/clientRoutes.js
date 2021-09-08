@@ -1,7 +1,7 @@
 // import required constants
-const express = require("express");
-const router = express.Router(); // enable router;
-const clientController = require("../controllers/clientController"); // client controller
+const express = require("express"),
+    router = express.Router(), // enable router;
+    clientController = require("../controllers/clientController"); // client controller
 
 const { successRes } = require('../utils/responseHandler');
 
