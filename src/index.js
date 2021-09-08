@@ -4,6 +4,7 @@ const express = require ('express'),
   swaggerUI = require ('swagger-ui-express'),
   YAML = require ('yamljs'),
   app = express(),
+  { errorRes } = require ('./utils/responseHandler'),
   swaggerDoc = YAML.load(`${process.cwd()}/swagger.yaml`), // import swagger doc
   { PORT } = process.env; // import port from env
 

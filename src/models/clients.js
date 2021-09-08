@@ -12,12 +12,16 @@ const ClientSchema = new Schema({
     email: {
         type: String,
         trim: true,
-        required: true,
+        unique: true,
+        required: true
+    },
+    phone: {
+        type: Number,
+        required: true
     },
     provider: {
-        type: [Schema.Types.ObjectId],
-        required: true,
-        ref: "provider"
+        type: Array,
+        required: true
     },
 },
 {

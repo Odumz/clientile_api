@@ -20,12 +20,15 @@ class clientController {
         if (req.query.email) {
             conditions.email = req.query.email
         }
+        if (req.query.phone) {
+            conditions.phone = req.query.phone
+        }
 
         // console.log(conditions)
         // console.log(req.query)
         
         Client.find(conditions)
-        .select('_id name email provider')
+        .select('_id name email provider phone')
         .exec()
         .then(clients => {
             if (clients == '') {
@@ -41,6 +44,7 @@ class clientController {
                         _id: client._id,
                         name: client.name,
                         email: client.email,
+                        phone: client.phone,
                         provider: client.provider
                     }
                 })
@@ -54,7 +58,7 @@ class clientController {
     // get an client
     static async get(req, res, next) {
         Client.findOne({_id: req.params.id})
-            .select('_id name email provider')
+            .select('_id name email provider phone')
             .then(client => {
                 if (!client) {
                     return res.status(404).json({
@@ -73,51 +77,74 @@ class clientController {
     // add an client
     static async add(req, res, next) {
         console.log('client', req.body);
-        
-        await Client.create({
-            ...req.body
-        }).then(client => {
-            console.log(client);
-            const response = {
-                message: "New client created",
-                client: {
-                    _id: client._id,
-                    name: client.name,
-                    email: client.email,
-                    provider: client.provider
-                }
+        const { name, email, provider, phone } = req.body;
+
+        await Client.findOne({ email }).then(client => {
+            if (client) {
+                return res.status(400).json({
+                    message: 'Client already exists'
+                });
+            } else {
+                const newClient = new Client({
+                    name,
+                    email,
+                    phone,
+                    provider
+                });
+                newClient.save().then(client => {
+                    const response = {
+                        message: 'Client added successfully',
+                        client: {
+                            _id: client._id,
+                            name: client.name,
+                            email: client.email,
+                            phone: client.phone,
+                            provider: client.provider
+                        }
+                    }
+                    res.status(201).send(response);
+                }).catch(err => {
+                    return res.status(500).json({ message: err });
+                });
             }
-            return res.status(201)
-                .send(response);
-        }).catch(next);
+        }).catch(err => {
+            return res.status(500).json({ message: err });
+        })
     }
 
     // edit a client
     static async edit(req, res, next) {
-        await Client.findOneAndUpdate({_id: req.params.id}, req.body).then(client => {
+        const { name, email, provider } = req.body;
+
+        await Client.findOneAndUpdate({_id: req.params.id}, {
+            name,
+            email,
+            phone,
+            provider
+        }).then(() => {
             Client.findOne({_id: req.params.id})
-            .select('_id name email provider')
+            .select('_id name email provider phone')
             .then(client => {
                 if (!client) {
                     return res.status(404).json({
-                        message: 'Error! client not found'
+                        message: 'Error! Client not found'
                     })
                 }
                 const response = {
-                    message: 'client updated successfully',
+                    message: 'Client updated successfully',
                     client: client
                 }
                 res.status(200).send(response);
-            }).catch(err => {
-                return res.status(500).json({ message: err });
-            });
-        });
+            })    
+        }).catch(err => {
+            return res.status(500).json({ message: err });
+        })
     }
 
     // delete a client
-    static async delete(req, res, next) {
+    static async delete(req, res) {
         Client.findOneAndDelete({_id: req.params.id})
-            .select('_id name email country')
+            .select('_id name email provider phone')
             .then(client => {
                 if (!client) {
                     return res.status(404).json({
@@ -129,7 +156,9 @@ class clientController {
                     client: 'item no longer exists'
                 }
                 res.status(200).send(response);
-        });
+        }).catch(err => {
+            return res.status(500).json({ message: err });
+        })
     }
 }
 
