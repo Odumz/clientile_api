@@ -10,7 +10,7 @@ const Client = require('../models/clients');
 
 class clientController {
     // get all clients and send response
-    static async getAll(req, res, next) {
+    static async getAll(req, res) {
         // console.log("request:", req.user);
         let conditions = {};
         
@@ -55,7 +55,7 @@ class clientController {
         });
     }
 
-    // get an client
+    // get a client
     static async get(req, res, next) {
         Client.findOne({_id: req.params.id})
             .select('_id name email provider phone')
@@ -74,15 +74,15 @@ class clientController {
         }).catch(next);
     }
 
-    // add an client
-    static async add(req, res, next) {
+    // add a client
+    static async add(req, res) {
         console.log('client', req.body);
         const { name, email, provider, phone } = req.body;
 
         await Client.findOne({ email }).then(client => {
             if (client) {
-                return res.status(400).json({
-                    message: 'Client already exists'
+                return res.status(409).json({
+                    message: 'Error! Client already exists'
                 });
             } else {
                 const newClient = new Client({
@@ -113,7 +113,7 @@ class clientController {
     }
 
     // edit a client
-    static async edit(req, res, next) {
+    static async edit(req, res) {
         const { name, email, phone, provider } = req.body;
 
         await Client.findOneAndUpdate({_id: req.params.id}, {
@@ -121,7 +121,7 @@ class clientController {
             email,
             phone,
             provider
-        }).then(() => {
+        }).then((client) => {
             Client.findOne({_id: req.params.id})
             .select('_id name email provider phone')
             .then(client => {
