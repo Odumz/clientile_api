@@ -114,7 +114,7 @@ class clientController {
 
     // edit a client
     static async edit(req, res, next) {
-        const { name, email, provider } = req.body;
+        const { name, email, phone, provider } = req.body;
 
         await Client.findOneAndUpdate({_id: req.params.id}, {
             name,
