@@ -22,6 +22,8 @@ Duplicate the `sample_env` file to `.env`
 npm run dev
 ```
 
+local url for development: http://localhost:5000 //or PORT
+
 ### Compiles and hot-reloads for production
 ```
 npm run start
@@ -32,3 +34,4 @@ npm run start
 - [GitHub](https://github.com/Odumz/protranslating_clients_api.git)
 - [Swagger Documentation](https://protranslating.herokuapp.com/api-docs)
 - [Demo](https://protranslating.herokuapp.com)
+- [Postman](https://www.getpostman.com/collections/e10623717c805eca5c0a)
