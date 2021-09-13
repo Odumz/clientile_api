@@ -177,7 +177,7 @@ paths:
   /api/v1/clients:
     get:
       tags:
-        - client
+        - clients
       summary: Get all clients
       description: Get all the clients in the application
       operationId: fetchClients
@@ -495,6 +495,120 @@ definitions:
     - message
     - count
     - clients
+  FetchProviderSuccessResponse:
+    title: FetchProviderSuccessResponse
+    example:
+      status: 200
+      data:
+        id: 14
+        name: mike
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        $ref: '#/definitions/FetchProviderData'
+    required:
+    - status
+    - data
+  FetchProviderData:
+    title: FetchProviderData
+    example:
+      message: Providers fetched successfully
+      count: 90
+      providers:
+        $ref: '#/definitions/Providers'
+    type: object
+    properties:
+      message:
+        type: string
+      count:
+        type: integer
+      providers:
+        type: array
+        $ref: '#/definitions/Providers'
+    required:
+    - message
+    - count
+    - providers
+  UpdateClientSuccessResponse:
+    title: UpdateClientSuccessResponse
+    example:
+      status: 200
+      data:
+        id: 14
+        name: mike
+        email: mikebrown@email.com
+        phone: 18001119988
+        provider: ['provider1', 'provider2']
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        $ref: '#/definitions/UpdateClientData'
+    required:
+    - status
+    - data
+  UpdateClientData:
+    title: UpdateClientData
+    example:
+      message: Clients updated successfully
+      count: 109
+      clients:
+        $ref: '#/definitions/Clients'
+    type: object
+    properties:
+      message:
+        type: string
+      count:
+        type: integer
+      clients:
+        type: array
+        $ref: '#/definitions/Clients'
+    required:
+    - message
+    - count
+    - clients
+  UpdateProviderSuccessResponse:
+    title: UpdateProviderSuccessResponse
+    example:
+      status: 200
+      data:
+        id: 14
+        name: mike
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        $ref: '#/definitions/UpdateProviderData'
+    required:
+    - status
+    - data
+  UpdateProviderData:
+    title: UpdateProviderData
+    example:
+      message: Providers updated successfully
+      count: 90
+      providers:
+        $ref: '#/definitions/Providers'
+    type: object
+    properties:
+      message:
+        type: string
+      count:
+        type: integer
+      providers:
+        type: array
+        $ref: '#/definitions/Providers'
+    required:
+    - message
+    - count
+    - providers
   Clients:
     title: Clients
     properties:
