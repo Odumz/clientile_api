@@ -149,6 +149,8 @@ paths:
           description: client's provider(s)
           required: true
           type: array
+          items:
+            type: string
       responses:
         "201":
           description: successfully added
