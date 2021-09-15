@@ -16,6 +16,6 @@ const ProviderSchema = new Schema({
 }
 );
 
-const Provider = mongoose.model('provider', ProviderSchema);
+const Provider = mongoose.model('providers', ProviderSchema);
 
 module.exports = Provider;

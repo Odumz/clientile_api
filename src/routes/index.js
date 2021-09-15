@@ -12,7 +12,7 @@ const express = require('express');
     clientRoutes = require('./clientRoutes');
 
 // require routes
-router.get('/', (req, res) => successRes(res, 200, { message: 'Welcome to the Protranslating API v1.0!'}));
+router.get('/', (req, res) => successRes(res, 200, { message: 'Welcome to the Clientelle API v1.0!'}));
 
 // initialize the client routes
 router.use('/clients', clientRoutes);

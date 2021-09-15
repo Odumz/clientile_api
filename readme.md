@@ -1,4 +1,4 @@
-# Protranslating Clients API
+# Clientelle API
 APIs for practical test for fullstack javascript developer with experience in Vue, Node.js, Express, MongoDB, and Swagger.
 
 ## Project setup

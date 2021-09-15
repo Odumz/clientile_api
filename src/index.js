@@ -30,7 +30,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: false })); // handle form 
 app.use("/api/v1", routes);
 
 // simple route
-app.get("/", (req, res) => successRes(res, 200, { message: 'Welcome to Protranslating application with nodejs, express, and mongodb.'}));
+app.get("/", (req, res) => successRes(res, 200, { message: 'Welcome to Clientelle application with nodejs, express, and mongodb.'}));
 
 app.all('*', (req, res, next) => errorRes(next, 404, 'The Route you are requesting for does not exist'));
 

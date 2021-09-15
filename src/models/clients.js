@@ -20,8 +20,9 @@ const ClientSchema = new Schema({
         required: true
     },
     provider: {
-        type: Array,
-        required: true
+        type: [Schema.Types.ObjectId],
+        required: true,
+        ref: "provider"
     },
 },
 {
@@ -29,6 +30,6 @@ const ClientSchema = new Schema({
 }
 );
 
-const Client = mongoose.model('client', ClientSchema);
+const Client = mongoose.model('clients', ClientSchema);
 
 module.exports = Client;

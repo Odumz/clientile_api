@@ -29,6 +29,7 @@ class clientController {
         
         Client.find(conditions)
         .select('_id name email provider phone')
+        .populate({path: 'provider', model: 'providers', select: ['_id', 'name']})
         .exec()
         .then(clients => {
             if (clients == '') {
@@ -59,6 +60,7 @@ class clientController {
     static async get(req, res, next) {
         Client.findOne({_id: req.params.id})
             .select('_id name email provider phone')
+            .populate({path: 'provider', model: 'providers', select: ['_id', 'name']})
             .then(client => {
                 if (!client) {
                     return res.status(404).json({
@@ -124,6 +126,7 @@ class clientController {
         }).then((client) => {
             Client.findOne({_id: req.params.id})
             .select('_id name email provider phone')
+            .populate({path: 'provider', model: 'providers', select: ['_id', 'name']})
             .then(client => {
                 if (!client) {
                     return res.status(404).json({

@@ -37,7 +37,7 @@ const { successRes } = require('../utils/responseHandler');
  *             example: 
  * 
 */
-router.get("/test", (req, res) => successRes(res, 200, { message: 'Welcome to the Protranslating Clients API v1.0! This is client routes'}));
+router.get("/test", (req, res) => successRes(res, 200, { message: 'Welcome to the Clientelle API v1.0! This is client routes'}));
 
 /**
 *  @swagger

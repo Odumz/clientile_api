@@ -36,7 +36,7 @@ const express = require("express"),
  *             example: 
  * 
 */
-router.get("/test", (req, res) => successRes(res, 200, { message: 'Welcome to the Protranslating Clients API v1.0! This is provider routes'}));
+router.get("/test", (req, res) => successRes(res, 200, { message: 'Welcome to the Clientelle API v1.0! This is provider routes'}));
 
 /**
 *  @swagger

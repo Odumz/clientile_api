@@ -1,5 +1,5 @@
 {
-  "name": "protranslating_clients_api",
+  "name": "clientelle_api",
   "version": "1.0.0",
   "description": "APIs for Practical test for fullstack javascript developer with experience in Vue, Node.js, Express, MongoDB, and Swagger.",
   "main": "index.js",

@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: "This is an API documentation for the Protranslating API server."
+  description: "This is an API documentation for the Clientelle API server."
   version: 1.0.0
-  title: Protranslating API Documentation
+  title: Clientelle API Documentation
   license:
     name: Apache 2.0
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -32,7 +32,7 @@ paths:
         - application/json
       responses:
         "200":
-          description: Welcome to Protranslating application with nodejs, express, and mongodb.
+          description: Welcome to Clientelle application with nodejs, express, and mongodb.
   /api/v1:
     get:
       tags:
@@ -47,7 +47,7 @@ paths:
         - application/json
       responses:
         "200":
-          description: Welcome to the Protranslating API v1.0! 
+          description: Welcome to the Clientelle API v1.0! 
   /api/v1/clients/test:
     get:
       tags:
@@ -62,7 +62,7 @@ paths:
         - application/json
       responses:
         "200":
-          description: Welcome to the Protranslating API v1.0! This is the client routes
+          description: Welcome to the Clientelle API v1.0! This is the client routes
   /api/v1/providers/test:
     get:
       tags:
@@ -77,7 +77,7 @@ paths:
         - application/json
       responses:
         "200":
-          description: Welcome to the Protranslating API v1.0! This is the provider routes
+          description: Welcome to the Clientelle API v1.0! This is the provider routes
   "/api/v1/providers/add":
     post:
       tags:
