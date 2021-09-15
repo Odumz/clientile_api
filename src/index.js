@@ -20,7 +20,9 @@ dotenv.config();
 require("./db")();
 
 // Enable All CORS Requests
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 // Body-Parser Middleware
 app.use(express.json({ limit: "50mb" })); // handle raw json
