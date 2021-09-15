@@ -38,6 +38,11 @@ app.all('*', (req, res, next) => errorRes(next, 404, 'The Route you are requesti
 
 const port = process.env.PORT || PORT;
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 // error handling middleware
 app.use((err,req,res,next) => {
   //console.log(err);
